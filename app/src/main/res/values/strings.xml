@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">RetrofitRealm</string>
+    <string name="error_contrasenia_invalida">Contraseña invalida</string>
+    <string name="error_usuario_requerido">Usuario requerido</string>
+</resources>

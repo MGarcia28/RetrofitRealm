@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.admin.retrofitrealm.loginRetrofit.LoginActivity">
+
+    <EditText
+        android:id="@+id/edtUsuario"
+        android:layout_width="349dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="180dp"
+        android:layout_marginBottom="9dp"
+        android:layout_marginLeft="16dp"
+        android:ems="10"
+        android:hint="Usuario"
+        android:text="Luis"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/edtPassword"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/edtPassword"
+        android:layout_width="349dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="39dp"
+        android:layout_marginLeft="16dp"
+        android:ems="10"
+        android:text="password"
+        android:hint="Password"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/btnLogin"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtUsuario" />
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="197dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="118dp"
+        android:text="Aceptar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtPassword" />
+
+</android.support.constraint.ConstraintLayout>
