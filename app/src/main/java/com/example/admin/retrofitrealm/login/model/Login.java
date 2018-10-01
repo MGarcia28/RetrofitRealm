@@ -1,11 +1,11 @@
-package com.example.admin.retrofitrealm.loginRetrofit;
+package com.example.admin.retrofitrealm.login.model;
 
 import com.google.gson.annotations.SerializedName;
 
 /**
  * Created by Admin on 28/08/2018.
  */
-public class LoginModel {
+public class Login {
 
     @SerializedName("agente")
     public String agente;
@@ -19,10 +19,10 @@ public class LoginModel {
     @SerializedName("token")
     public String token;
 
-    public LoginModel() {
+    public Login(String agente) {
     }
 
-    public LoginModel(String agente, Error error, String id_user, String token) {
+    public Login(String agente, Error error, String id_user, String token) {
         this.agente = agente;
         this.error = error;
         this.id_user = id_user;

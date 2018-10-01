@@ -6,8 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.admin.retrofitrealm.loginRetrofit.LoginActivity;
-import com.example.admin.retrofitrealm.fotosRealm.MainActivity;
+import com.example.admin.retrofitrealm.fotos.view.MainActivity;
+import com.example.admin.retrofitrealm.login.view.LoginActivity;
 import com.example.admin.retrofitrealm.realmDB.UsuarioRealm;
 
 public class Inicio extends AppCompatActivity {

@@ -18,8 +18,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".fotosRealm.MainActivity" />
-        <activity android:name=".loginRetrofit.LoginActivity" />
+        <activity android:name=".fotos.view.MainActivity" />
+        <activity android:name=".login.view.LoginActivity" />
         <activity android:name=".realmDB.UsuarioRealm"></activity>
     </application>
 

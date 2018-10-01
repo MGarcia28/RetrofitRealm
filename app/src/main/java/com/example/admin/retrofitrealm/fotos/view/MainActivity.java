@@ -1,4 +1,4 @@
-package com.example.admin.retrofitrealm.fotosRealm;
+package com.example.admin.retrofitrealm.fotos.view;
 
 import android.app.ProgressDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -8,8 +8,10 @@ import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
 import com.example.admin.retrofitrealm.R;
-import com.example.admin.retrofitrealm.retrofit.GetDataService;
-import com.example.admin.retrofitrealm.retrofit.RetrofitClientInstance;
+import com.example.admin.retrofitrealm.apiAdapter.ResApiAdapter;
+import com.example.admin.retrofitrealm.apiAdapter.Service;
+import com.example.admin.retrofitrealm.fotos.CustomAdapter;
+import com.example.admin.retrofitrealm.fotos.RetroPhoto;
 
 import java.util.List;
 
@@ -35,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         progressDoalog.show();
 
         /*Create handle for the RetrofitInstance interface*/
-        GetDataService service = RetrofitClientInstance.getRetrofitInstance(BASE_URL).create(GetDataService.class);
+        Service service = ResApiAdapter.getRetrofitInstance(BASE_URL).create(Service.class);
         Call<List<RetroPhoto>> call = service.getAllPhotos();
         call.enqueue(new Callback<List<RetroPhoto>>() {
             @Override

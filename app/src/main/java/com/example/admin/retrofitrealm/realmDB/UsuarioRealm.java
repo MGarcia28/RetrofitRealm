@@ -9,7 +9,6 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.admin.retrofitrealm.R;
-import com.example.admin.retrofitrealm.loginRetrofit.LoginModel;
 
 import io.realm.Realm;
 import io.realm.RealmConfiguration;

@@ -1,4 +1,4 @@
-package com.example.admin.retrofitrealm.fotosRealm;
+package com.example.admin.retrofitrealm.fotos;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -54,15 +54,16 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
 
     @Override
     public void onBindViewHolder(CustomViewHolder holder, int position) {
+
         holder.txtTitle.setText(dataList.get(position).getTitle());
 
         Picasso.Builder builder = new Picasso.Builder(context);
+
         builder.downloader(new OkHttp3Downloader(context));
         builder.build().load(dataList.get(position).getThumbnailUrl())
                 .placeholder((R.drawable.ic_launcher_background))
                 .error(R.drawable.ic_launcher_background)
                 .into(holder.coverImage);
-
     }
 
     @Override

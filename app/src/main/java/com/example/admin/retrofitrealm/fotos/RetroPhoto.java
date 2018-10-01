@@ -1,4 +1,4 @@
-package com.example.admin.retrofitrealm.fotosRealm;
+package com.example.admin.retrofitrealm.fotos;
 
 import com.google.gson.annotations.SerializedName;
 

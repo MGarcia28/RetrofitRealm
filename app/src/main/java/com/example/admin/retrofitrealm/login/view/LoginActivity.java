@@ -1,30 +1,28 @@
-package com.example.admin.retrofitrealm.loginRetrofit;
+package com.example.admin.retrofitrealm.login.view;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.admin.retrofitrealm.R;
-import com.example.admin.retrofitrealm.retrofit.GetDataService;
-import com.example.admin.retrofitrealm.retrofit.RetrofitClientInstance;
-import com.google.gson.JsonObject;
+import com.example.admin.retrofitrealm.login.model.Login;
+import com.example.admin.retrofitrealm.login.presenter.LoginPresenter;
+import com.example.admin.retrofitrealm.login.presenter.LoginPresenterImp;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity implements LoginView {
 
     EditText edtUsuario;
     EditText edtPassword;
     Button btnLogin;
-
     private static final String BASE_URL = "https://agentemovil.pagatodo.com/AgenteMovil.svc/agMov/";
+
+
+    private LoginPresenter loginPresenter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +32,8 @@ public class LoginActivity extends AppCompatActivity {
         edtUsuario = findViewById(R.id.edtUsuario);
         edtPassword = findViewById(R.id.edtPassword);
         btnLogin = findViewById(R.id.btnLogin);
+
+        loginPresenter = new LoginPresenterImp(this);
 
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
@@ -65,41 +65,30 @@ public class LoginActivity extends AppCompatActivity {
                     focusView.requestFocus();
                     return;
                 } else {
-
-                    LoginService(edtUsuario.getText().toString(), edtPassword.getText().toString());
+                    loginData();
                 }
             }
         });
-
     }
 
-    private void LoginService(String s, String p) {
 
-        JsonObject jsonObject = new JsonObject();
-        JsonObject jObject = new JsonObject();
-
-        jObject.addProperty("user", s);
-        jObject.addProperty("pass", p);
-        jsonObject.add("data",jObject);
-
-        GetDataService service = RetrofitClientInstance.getRetrofitInstance(BASE_URL).create(GetDataService.class);
-
-        Call<LoginModel> call = service.getLogin2(jsonObject);
-        call.enqueue(new Callback<LoginModel>() {
-
-            @Override
-            public void onResponse(Call<LoginModel> call, Response<LoginModel> response) {
-                generateDataList(response.body());
-            }
-
-            @Override
-            public void onFailure(Call<LoginModel> call, Throwable t) {
-                Toast.makeText(LoginActivity.this, "Something went wrong...Please try later!", Toast.LENGTH_SHORT).show();
-            }
-        });
+    @Override
+    public void loginData() {
+        loginPresenter.getLoginData(edtUsuario.getText().toString(), edtPassword.getText().toString());
     }
 
-    private void generateDataList(LoginModel body) {
-        Log.d("RESULTADO", body.toString());
+    @Override
+    public void loginCorrecto(Login user) {
+        Toast.makeText(this, "Usuario: " + user.getAgente(), Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void loginIncorrecto(String mensaje) {
+        Toast.makeText(this, mensaje, Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void errorDeServicio(String mensaje) {
+        Toast.makeText(this, mensaje, Toast.LENGTH_LONG).show();
     }
 }
